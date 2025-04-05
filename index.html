@@ -31,7 +31,7 @@
             let s0 = parseInt(document.getElementById("s0").value);
             let qThreshold = parseInt(document.getElementById("qThreshold").value);
 
-            if (!age || !q1 || !q0 || !s1 || !s0 || !qThreshold) {
+            if (!age || isNaN(q1) || isNaN(q0) || !s1 || !s0 || !qThreshold) {
                 document.getElementById("result").innerText = "请填写所有字段！";
                 return;
             }
@@ -46,6 +46,12 @@
             }
             if (q0 + q1 < age - 20) {
                 document.getElementById("result").innerText = "结果：样本量低";
+                return;
+            }
+
+            // 如果 Q1 和 Q0 都为 0，分母会为 0，这里加个特殊处理
+            if (q0 === 0 && q1 === 0) {
+                document.getElementById("result").innerText = "结果：无法计算（Q1 和 Q0 不能同时为 0）";
                 return;
             }
 

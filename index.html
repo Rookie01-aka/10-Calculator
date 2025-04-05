@@ -1,78 +1,58 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title>guide</title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="1671.6">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px 'Songti SC'; color: #000000; -webkit-text-stroke: #000000}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000; min-height: 12.0px}
-    span.s1 {font-kerning: none}
-    span.s2 {font: 12.0px 'Songti SC'; font-kerning: none}
-    span.s3 {font: 12.0px Times; font-kerning: none}
-  </style>
+    <meta charset="UTF-8">
+    <title>0-1角色认定工具</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        label { display: block; margin: 10px 0; }
+        button { margin-top: 10px; padding: 5px 10px; }
+        #result { margin-top: 20px; font-weight: bold; }
+    </style>
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="zh-CN"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;0-1</span><span class="s2">角色认定工具</span><span class="s1">&lt;/title&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>body { font-family: Arial, sans-serif; margin: 20px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>label { display: block; margin: 10px 0; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>button { margin-top: 10px; padding: 5px 10px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#result { margin-top: 20px; font-weight: bold; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h2&gt;0-1</span><span class="s2">角色认定工具</span><span class="s1">&lt;/h2&gt;</span></p>
-<p class="p2"><span class="s3"><span class="Apple-converted-space">    </span>&lt;p&gt;</span><span class="s1">请填写以下信息以计算你的</span><span class="s3">0-1</span><span class="s1">角色倾向：</span><span class="s3">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label&gt;</span><span class="s2">你的年龄</span><span class="s1">: &lt;input type="number" id="age" min="20" required&gt;&lt;/label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label&gt;</span><span class="s2">做</span><span class="s1">1</span><span class="s2">的次数</span><span class="s1"> (Q1): &lt;input type="number" id="q1" min="0" required&gt;&lt;/label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label&gt;</span><span class="s2">做</span><span class="s1">0</span><span class="s2">的次数</span><span class="s1"> (Q0): &lt;input type="number" id="q0" min="0" required&gt;&lt;/label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label&gt;</span><span class="s2">做</span><span class="s1">1</span><span class="s2">的满意度</span><span class="s1"> (S1, 1-10): &lt;input type="number" id="s1" min="1" max="10" required&gt;&lt;/label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label&gt;</span><span class="s2">做</span><span class="s1">0</span><span class="s2">的满意度</span><span class="s1"> (S0, 1-10): &lt;input type="number" id="s0" min="1" max="10" required&gt;&lt;/label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label&gt;Q</span><span class="s2">素炮</span><span class="s1"> (</span><span class="s2">最小总次数阈值</span><span class="s1">): &lt;input type="number" id="qThreshold" min="1" required&gt;&lt;/label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;button onclick="calculateRole()"&gt;</span><span class="s2">计算结果</span><span class="s1">&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p id="result"&gt;&lt;/p&gt;</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function calculateRole() {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let age = parseInt(document.getElementById("age").value);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let q1 = parseInt(document.getElementById("q1").value);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let q0 = parseInt(document.getElementById("q0").value);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let s1 = parseInt(document.getElementById("s1").value);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let s0 = parseInt(document.getElementById("s0").value);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let qThreshold = parseInt(document.getElementById("qThreshold").value);</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (!age || !q1 || !q0 || !s1 || !s0 || !qThreshold) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>document.getElementById("result").innerText = "</span><span class="s2">请填写所有字段！</span><span class="s1">";</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>return;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (s1 &lt; 1 || s1 &gt; 10 || s0 &lt; 1 || s0 &gt; 10) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>document.getElementById("result").innerText = "</span><span class="s2">满意度必须在</span><span class="s1">1-10</span><span class="s2">之间！</span><span class="s1">";</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>return;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (q0 + q1 &lt;= qThreshold) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>document.getElementById("result").innerText = "</span><span class="s2">结果：不喜</span><span class="s1">10";</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>return;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (q0 + q1 &lt; age - 20) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>document.getElementById("result").innerText = "</span><span class="s2">结果：样本量低</span><span class="s1">";</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>return;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let score = (q1 * s1) / (q0 * s0 + q1 * s1);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let role = score &gt; 0.7 ? "</span><span class="s2">倾向</span><span class="s1">1</span><span class="s2">号角色</span><span class="s1">" : score &lt; 0.3 ? "</span><span class="s2">倾向</span><span class="s1">0</span><span class="s2">号角色</span><span class="s1">" : "</span><span class="s2">中间角色</span><span class="s1">";</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById("result").innerText = `</span><span class="s2">结果：</span><span class="s1">${role} (</span><span class="s2">得分</span><span class="s1">: ${score.toFixed(2)})`;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+    <h2>0-1角色认定工具</h2>
+    <p>请填写以下信息以计算你的0-1角色倾向：</p>
+    <label>你的年龄: <input type="number" id="age" min="20" required></label>
+    <label>做1的次数 (Q1): <input type="number" id="q1" min="0" required></label>
+    <label>做0的次数 (Q0): <input type="number" id="q0" min="0" required></label>
+    <label>做1的满意度 (S1, 1-10): <input type="number" id="s1" min="1" max="10" required></label>
+    <label>做0的满意度 (S0, 1-10): <input type="number" id="s0" min="1" max="10" required></label>
+    <label>Q素炮 (最小总次数阈值): <input type="number" id="qThreshold" min="1" required></label>
+    <button onclick="calculateRole()">计算结果</button>
+    <p id="result"></p>
+
+    <script>
+        function calculateRole() {
+            let age = parseInt(document.getElementById("age").value);
+            let q1 = parseInt(document.getElementById("q1").value);
+            let q0 = parseInt(document.getElementById("q0").value);
+            let s1 = parseInt(document.getElementById("s1").value);
+            let s0 = parseInt(document.getElementById("s0").value);
+            let qThreshold = parseInt(document.getElementById("qThreshold").value);
+
+            if (!age || !q1 || !q0 || !s1 || !s0 || !qThreshold) {
+                document.getElementById("result").innerText = "请填写所有字段！";
+                return;
+            }
+
+            if (s1 < 1 || s1 > 10 || s0 < 1 || s0 > 10) {
+                document.getElementById("result").innerText = "满意度必须在1-10之间！";
+                return;
+            }
+            if (q0 + q1 <= qThreshold) {
+                document.getElementById("result").innerText = "结果：不喜10";
+                return;
+            }
+            if (q0 + q1 < age - 20) {
+                document.getElementById("result").innerText = "结果：样本量低";
+                return;
+            }
+
+            let score = (q1 * s1) / (q0 * s0 + q1 * s1);
+            let role = score > 0.7 ? "倾向1号角色" : score < 0.3 ? "倾向0号角色" : "中间角色";
+            document.getElementById("result").innerText = `结果：${role} (得分: ${score.toFixed(2)})`;
+        }
+    </script>
 </body>
 </html>
